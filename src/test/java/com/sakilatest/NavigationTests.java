@@ -2,14 +2,20 @@ package com.sakilatest;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 public class NavigationTests {
     WebDriver driver = new ChromeDriver();
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     @BeforeTest
     public void setUp() {
@@ -255,6 +261,54 @@ public class NavigationTests {
         String currentUrl = driver.getCurrentUrl();
         String expectedUrl = "http://localhost:5173/";
         Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
+    }
+
+    @Test
+    public void navigateFromActorDetailsToFilmDetails() {
+        String url = "http://localHost:5173/actors/1";
+        driver.get(url);
+        WebElement firstFilmLink = driver.findElement(By.cssSelector(".film-list li a"));
+        // Capture the film title from the list
+        String expectedFilmTitle = firstFilmLink.getText().split("\\(")[0].trim();
+        System.out.println("Expected Film Title: " + expectedFilmTitle);
+
+        // Click the first film link to navigate to the film details page
+        firstFilmLink.click();
+
+        // Wait for the film detail page to load and verify the film title
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h1")));
+
+        // Capture the film title displayed on the film details page
+        WebElement filmTitleElement = driver.findElement(By.cssSelector("h1"));
+        String actualFilmTitle = filmTitleElement.getText().split("\\(")[0].trim();
+        System.out.println("Actual Film Title: " + actualFilmTitle);
+
+        // Assert that the actual film title matches the expected title
+        Assert.assertEquals(actualFilmTitle, expectedFilmTitle, "Correct film details page is displayed");
+    }
+
+    @Test
+    public void navigateFromFilmDetailsToActorDetails() {
+        String url = "http://localHost:5173/films/1";
+        driver.get(url);
+        WebElement firstActorLink = driver.findElement(By.cssSelector(".actor-list li a"));
+        // Capture the actor name from the list
+        String expectedActorName = firstActorLink.getText().split("\\(")[0].trim();
+        System.out.println("Expected Actor Name: " + expectedActorName);
+
+        // Click the first actor link to navigate to the actor details page
+        firstActorLink.click();
+
+        // Wait for the actor detail page to load and verify the actor name
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h1")));
+
+        // Capture the actor name displayed on the actor details page
+        WebElement actorNameElement = driver.findElement(By.cssSelector("h1"));
+        String actualActorName = actorNameElement.getText().split("\\(")[0].trim();
+        System.out.println("Actual Actor Name: " + actualActorName);
+
+        // Assert that the actual actor name matches the expected name
+        Assert.assertEquals(actualActorName, expectedActorName, "Correct actor details page is displayed");
     }
 
     @AfterTest
