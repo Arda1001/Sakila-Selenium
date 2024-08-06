@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="ActorTests">
+    <test name="ActorsTests">
+        <classes>
+            <class name="com.sakilatest.ActorTests"/>
+        </classes>
+    </test>
+    <test name="NavigationTests">
+        <classes>
+            <class name="com.sakilatest.NavigationTests"/>
+        </classes>
+    </test>
+    <test name="LanguageTests">
+        <classes>
+            <class name="com.sakilatest.LanguageTests"/>
+        </classes>
+    </test>
+</suite>
