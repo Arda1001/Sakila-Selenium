@@ -15,4 +15,9 @@
             <class name="com.sakilatest.LanguageTests"/>
         </classes>
     </test>
+    <test name="FilmTests">
+        <classes>
+            <class name="com.sakilatest.FilmTests"/>
+        </classes>
+    </test>
 </suite>

@@ -311,6 +311,15 @@ public class NavigationTests {
         Assert.assertEquals(actualActorName, expectedActorName, "Correct actor details page is displayed");
     }
 
+    @Test
+    public void navigateToErrorPage() {
+        String url = "http://localHost:5173/error";
+        driver.get(url);
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "http://localhost:5173/error";
+        Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
+    }
+
     @AfterTest
     public void tearDown() {
         driver.quit();

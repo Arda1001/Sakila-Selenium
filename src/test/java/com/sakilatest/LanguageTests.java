@@ -79,6 +79,27 @@ public class LanguageTests {
 
     }
 
+    @Test
+    public void createLanguageWithEmptyNameTest() {
+        // Navigate to the language creation page
+        driver.get("http://localhost:5173/languages");
+
+        // Wait for the create language button to be visible and click it
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".create-button")));
+        WebElement createLanguageButton = driver.findElement(By.cssSelector(".create-button"));
+        createLanguageButton.click();
+
+        // Attempt to submit form with empty name
+        WebElement titleInput = driver.findElement(By.id("name"));
+        titleInput.clear();
+
+        WebElement submitButton = driver.findElement(By.cssSelector(".create-button"));
+        submitButton.click();
+
+        // Verify that the form is not submitted and user stays on the same page
+        Assert.assertEquals(driver.getCurrentUrl(), "http://localhost:5173/languages/create");
+    }
+
     @AfterTest
     public void tearDown() {
         driver.quit();
