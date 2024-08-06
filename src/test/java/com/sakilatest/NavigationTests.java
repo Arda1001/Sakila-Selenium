@@ -312,12 +312,21 @@ public class NavigationTests {
     }
 
     @Test
-    public void navigateToErrorPage() {
-        String url = "http://localHost:5173/error";
-        driver.get(url);
-        String currentUrl = driver.getCurrentUrl();
-        String expectedUrl = "http://localhost:5173/error";
-        Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
+    public void testInvalidUrlNavigation() {
+        // Navigate to the invalid URL
+        String invalidUrl = "http://localhost:5173/gsgsgrsgrs";
+        driver.get(invalidUrl);
+
+        // Wait for the 404 error page to load
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1")));
+
+        // Check if the correct error page is displayed
+        String errorMessage = driver.findElement(By.cssSelector("h1")).getText();
+        Assert.assertEquals(errorMessage, "404", "The error page is not displayed correctly.");
+
+        // Optionally, verify the presence of other elements, like the button
+        String buttonText = driver.findElement(By.cssSelector("button")).getText();
+        Assert.assertEquals(buttonText, "Home", "The button text is not as expected.");
     }
 
     @AfterTest

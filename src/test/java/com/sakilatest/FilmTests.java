@@ -163,7 +163,7 @@ public class FilmTests {
     }
 
     @Test
-    public void createFilmFormWithEmptyFieldsTest() {
+    public void createFilmWithEmptyFieldsTest() {
         // Navigate to the film creation page
         driver.get("http://localhost:5173/films");
 
@@ -193,7 +193,7 @@ public class FilmTests {
     }
 
     @Test
-    public void createFilmInvalidReleaseYearTest() {
+    public void createFilmWithInvalidReleaseYearTest() {
         // Navigate to the film creation page
         driver.get("http://localhost:5173/films");
 
