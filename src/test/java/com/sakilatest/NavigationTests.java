@@ -18,7 +18,7 @@ public class NavigationTests {
     }
 
     @Test
-    public void navigateToActors() {
+    public void navigateFromHomeToActors() {
         String url = "http://localHost:5173/";
         driver.get(url);
         driver.findElement(By.linkText("Actors")).click();
@@ -28,7 +28,7 @@ public class NavigationTests {
     }
 
     @Test
-    public void navigateToFilms() {
+    public void navigateFromHomeToFilms() {
         String url = "http://localHost:5173/";
         driver.get(url);
         driver.findElement(By.linkText("Films")).click();
@@ -38,7 +38,7 @@ public class NavigationTests {
     }
 
     @Test
-    public void navigateToLanguages() {
+    public void navigateFromHomeToLanguages() {
         String url = "http://localHost:5173/";
         driver.get(url);
         driver.findElement(By.linkText("Languages")).click();
@@ -48,12 +48,42 @@ public class NavigationTests {
     }
 
     @Test
-    public void navigateToHome() {
+    public void navigateFromHomeToHome() {
         String url = "http://localHost:5173/";
         driver.get(url);
         driver.findElement(By.linkText("Home")).click();
         String currentUrl = driver.getCurrentUrl();
         String expectedUrl = "http://localhost:5173/";
+        Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
+    }
+
+    @Test
+    public void navigateFromActorsToActors() {
+        String url = "http://localHost:5173/actors";
+        driver.get(url);
+        driver.findElement(By.linkText("Actors")).click();
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "http://localhost:5173/actors";
+        Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
+    }
+
+    @Test
+    public void navigateFromFilmsToFilms() {
+        String url = "http://localHost:5173/films";
+        driver.get(url);
+        driver.findElement(By.linkText("Films")).click();
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "http://localhost:5173/films";
+        Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
+    }
+
+    @Test
+    public void navigateFromLanguagesToLanguages() {
+        String url = "http://localHost:5173/languages";
+        driver.get(url);
+        driver.findElement(By.linkText("Languages")).click();
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "http://localhost:5173/languages";
         Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
     }
 
@@ -144,6 +174,86 @@ public class NavigationTests {
         driver.findElement(By.linkText("Films")).click();
         String currentUrl = driver.getCurrentUrl();
         String expectedUrl = "http://localhost:5173/films";
+        Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
+    }
+
+    @Test
+    public void navigateFromActorDetailsToActors() {
+        String url = "http://localHost:5173/actors/1";
+        driver.get(url);
+        driver.findElement(By.linkText("Actors")).click();
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "http://localhost:5173/actors";
+        Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
+    }
+
+    @Test
+    public void navigateFromActorDetailsToFilms() {
+        String url = "http://localHost:5173/actors/1";
+        driver.get(url);
+        driver.findElement(By.linkText("Films")).click();
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "http://localhost:5173/films";
+        Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
+    }
+
+    @Test
+    public void navigateFromActorDetailsToLanguages() {
+        String url = "http://localHost:5173/actors/1";
+        driver.get(url);
+        driver.findElement(By.linkText("Languages")).click();
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "http://localhost:5173/languages";
+        Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
+    }
+
+    @Test
+    public void navigateFromActorDetailsToHome() {
+        String url = "http://localHost:5173/actors/1";
+        driver.get(url);
+        driver.findElement(By.linkText("Home")).click();
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "http://localhost:5173/";
+        Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
+    }
+
+    @Test
+    public void navigateFromFilmDetailsToFilms() {
+        String url = "http://localHost:5173/films/1";
+        driver.get(url);
+        driver.findElement(By.linkText("Films")).click();
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "http://localhost:5173/films";
+        Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
+    }
+
+    @Test
+    public void navigateFromFilmDetailsToActors() {
+        String url = "http://localHost:5173/films/1";
+        driver.get(url);
+        driver.findElement(By.linkText("Actors")).click();
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "http://localhost:5173/actors";
+        Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
+    }
+
+    @Test
+    public void navigateFromFilmDetailsToLanguages() {
+        String url = "http://localHost:5173/films/1";
+        driver.get(url);
+        driver.findElement(By.linkText("Languages")).click();
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "http://localhost:5173/languages";
+        Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
+    }
+
+    @Test
+    public void navigateFromFilmDetailsToHome() {
+        String url = "http://localHost:5173/films/1";
+        driver.get(url);
+        driver.findElement(By.linkText("Home")).click();
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "http://localhost:5173/";
         Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
     }
 
