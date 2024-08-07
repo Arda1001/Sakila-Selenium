@@ -28,7 +28,7 @@ Feature: Actor Page
 
   Scenario: Attempt to create actor with empty fields
     Given the user is on the actor page
-    When the user clicks on the create actor button
+    When the user clicks on the create button
     And the user leaves the actor details blank
     And the user submits the form
     Then the actor form should not be submitted

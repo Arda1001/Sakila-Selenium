@@ -14,7 +14,7 @@ Feature: Language Page
 
   Scenario: Successfully create a new language
     Given the user is on the language page
-    When the user clicks on the create language button
+    When the user clicks on the create button
     And the user enters valid language details
     And the user submits the form
     Then a success message should be displayed
@@ -22,7 +22,7 @@ Feature: Language Page
 
   Scenario: Attempt to create language with empty field
     Given the user is on the language page
-    When the user clicks on the create language button
+    When the user clicks on the create button
     And the user leaves the language details blank
     And the user submits the form
     Then the language form should not be submitted

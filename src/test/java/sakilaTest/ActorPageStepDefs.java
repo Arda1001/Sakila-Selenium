@@ -39,13 +39,6 @@ public class ActorPageStepDefs {
         actorLink.click();
     }
 
-    @When("the user clicks on the create actor button")
-    public void theUserClicksOnTheCreateActorButton() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".create-button")));
-        WebElement createActorButton = driver.findElement(By.cssSelector(".create-button"));
-        createActorButton.click();
-    }
-
     @Then("the user should be taken to the Actor page")
     public void theUserShouldBeTakenToTheActorPage() {
         String currentUrl = driver.getCurrentUrl();

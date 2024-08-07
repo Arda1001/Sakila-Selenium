@@ -58,4 +58,11 @@ public class CommonStepDefs {
         WebElement createButton = driver.findElement(By.id("createButton"));
         createButton.click();
     }
+
+    @When("the user clicks on the create button")
+    public void theUserClicksOnTheCreateButton() {
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".create-button")));
+        WebElement createButton = driver.findElement(By.cssSelector(".create-button"));
+        createButton.click();
+    }
 }

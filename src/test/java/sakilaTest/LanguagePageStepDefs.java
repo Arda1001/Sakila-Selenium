@@ -58,13 +58,6 @@ public class LanguagePageStepDefs {
         assertEquals(currentUrl, "http://localhost:5173/languages", "Can search for a language");
     }
 
-    @When("the user clicks on the create language button")
-    public void theUserClicksOnTheCreateLanguageButton() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".create-button")));
-        WebElement createLanguageButton = driver.findElement(By.cssSelector(".create-button"));
-        createLanguageButton.click();
-    }
-
     @And("the user enters valid language details")
     public void theUserEntersValidLanguageDetails() {
         driver.findElement(By.id("name")).sendKeys("Selenium");
