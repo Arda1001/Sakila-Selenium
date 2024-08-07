@@ -2,22 +2,22 @@
 <suite name="ActorTests">
     <test name="ActorsTests">
         <classes>
-            <class name="com.sakilatest.ActorTests"/>
+            <class name="sakilaTest.ActorTests"/>
         </classes>
     </test>
     <test name="NavigationTests">
         <classes>
-            <class name="com.sakilatest.NavigationTests"/>
+            <class name="sakilaTest.NavigationTests"/>
         </classes>
     </test>
     <test name="LanguageTests">
         <classes>
-            <class name="com.sakilatest.LanguageTests"/>
+            <class name="sakilaTest.LanguageTests"/>
         </classes>
     </test>
     <test name="FilmTests">
         <classes>
-            <class name="com.sakilatest.FilmTests"/>
+            <class name="sakilaTest.FilmTests"/>
         </classes>
     </test>
 </suite>

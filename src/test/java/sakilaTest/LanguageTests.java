@@ -1,4 +1,4 @@
-package com.sakilatest;
+package sakilaTest;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;

@@ -1,4 +1,4 @@
-package com.sakilatest;
+package sakilaTest;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

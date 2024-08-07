@@ -1,4 +1,4 @@
-package com.sakilatest;
+package sakilaTest;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.List;
 
 public class ActorTests {
     WebDriver driver = new ChromeDriver();
@@ -28,6 +29,9 @@ public class ActorTests {
         String currentUrl = driver.getCurrentUrl();
         String expectedUrl = "http://localhost:5173/actors";
         Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".actor-list")));
+        List<WebElement> actorList = driver.findElements(By.cssSelector(".actor-list li"));
+        Assert.assertFalse(actorList.isEmpty(), "The actor list is not empty");
     }
 
     @Test
