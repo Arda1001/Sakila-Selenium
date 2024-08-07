@@ -47,6 +47,10 @@ public class ActorTests {
         actorLink.click();
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("/actors/"), "Navigated to the actor's detail page");
+        // Check if the actor details are displayed
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".film-list")));
+        List<WebElement> actorDetails = driver.findElements(By.cssSelector(".film-list li"));
+        Assert.assertFalse(actorDetails.isEmpty(), "The actor details are not empty");
     }
 
     @Test

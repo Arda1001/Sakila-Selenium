@@ -14,6 +14,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.List;
 
 public class FilmTests {
     WebDriver driver = new ChromeDriver();
@@ -33,6 +34,9 @@ public class FilmTests {
         String currentUrl = driver.getCurrentUrl();
         String expectedUrl = "http://localhost:5173/films";
         Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".film-list")));
+        List<WebElement> filmList = driver.findElements(By.cssSelector(".film-list li"));
+        Assert.assertFalse(filmList.isEmpty(), "The film list is not empty");
     }
 
     @Test
@@ -48,6 +52,12 @@ public class FilmTests {
         filmLink.click();
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("/films/"), "Navigated to the film's detail page");
+        // Check that the film details and cast list are not empty
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".film-details")));
+        List<WebElement> filmDetails = driver.findElements(By.cssSelector(".film-details p"));
+        List<WebElement> cast = driver.findElements(By.cssSelector(".actor-list li"));
+        Assert.assertFalse(filmDetails.isEmpty(), "The film details are not empty");
+        Assert.assertFalse(cast.isEmpty(), "The cast list is not empty");
     }
 
     @Test

@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.List;
 
 public class LanguageTests {
     WebDriver driver = new ChromeDriver();
@@ -32,6 +33,9 @@ public class LanguageTests {
         String currentUrl = driver.getCurrentUrl();
         String expectedUrl = "http://localhost:5173/languages";
         Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".language-list")));
+        List<WebElement> languageList = driver.findElements(By.cssSelector(".language-list li"));
+        Assert.assertFalse(languageList.isEmpty(), "The language list is not empty");
     }
 
     @Test
