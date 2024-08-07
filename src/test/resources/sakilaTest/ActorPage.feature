@@ -20,7 +20,7 @@ Feature: Actor Page
 
   Scenario: Successfully create a new actor
     Given the user is on the actor page
-    When the user clicks on the create actor button
+    When the user clicks on the create button
     And the user enters valid actor details
     And the user submits the form
     Then a success message should be displayed
