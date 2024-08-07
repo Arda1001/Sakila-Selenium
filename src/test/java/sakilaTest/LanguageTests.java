@@ -74,10 +74,9 @@ public class LanguageTests {
         searchInput.click();
         searchInput.sendKeys("Selenium");
         // Use XPath to find the link for John Doe by text
-        WebElement actorLink = wait.until(ExpectedConditions.presenceOfElementLocated(
+        wait.until(ExpectedConditions.presenceOfElementLocated(
                 By.xpath("//li[text()[contains(., 'SELENIUM')]]")
         ));
-        actorLink.click();
         currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("/languages"), "Can search for created language");
 

@@ -22,12 +22,13 @@ Feature: Actor Page
     Given the user is on the actor page
     When the user clicks on the create actor button
     And the user enters valid actor details
-    And the user submits the actor form
+    And the user submits the form
+    Then a success message should be displayed
     Then the actor should be added to the actor list
 
   Scenario: Attempt to create actor with empty fields
     Given the user is on the actor page
     When the user clicks on the create actor button
     And the user leaves the actor details blank
-    And the user submits the actor form
-    Then the form should not be submitted
+    And the user submits the form
+    Then the actor form should not be submitted

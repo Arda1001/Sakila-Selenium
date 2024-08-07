@@ -1,19 +1,15 @@
 package sakilaTest;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import static sakilaTest.CommonStepDefs.driver;
 
 import java.time.Duration;
 import java.util.List;
@@ -22,25 +18,7 @@ import static org.testng.AssertJUnit.*;
 
 public class ActorPageStepDefs {
 
-    private final WebDriver driver = new ChromeDriver();
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-    @Before
-    public void setup() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver/chromedriver.exe");
-        driver.manage().window().maximize();
-    }
-
-    @After
-    public void tearDown() {
-        driver.close();
-        driver.quit();
-    }
-
-    @Given("the user is on the home page")
-    public void theUserIsOnTheHomePage() {
-        driver.get("http://localhost:5173/");
-    }
 
     @Given("the user is on the actor page")
     public void theUserIsOnTheActorPage() {
@@ -59,13 +37,6 @@ public class ActorPageStepDefs {
                 By.xpath("//li/a[text()[contains(.,'PENELOPE')]][text()[contains(.,'GUINESS')]]")
         ));
         actorLink.click();
-    }
-
-    @When("the user clicks on the search bar")
-    public void theUserClicksOnTheSearchBar() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".search-bar")));
-        WebElement searchInput = driver.findElement(By.cssSelector(".search-bar"));
-        searchInput.click();
     }
 
     @When("the user clicks on the create actor button")
@@ -100,8 +71,6 @@ public class ActorPageStepDefs {
 
     @Then("the actor should be added to the actor list")
     public void theActorShouldBeAddedToTheActorList() {
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-        alert.accept();
         String currentUrl = driver.getCurrentUrl();
         Assert.assertTrue(currentUrl.contains("/actors"), "Can create an actor");
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".search-bar")));
@@ -116,8 +85,8 @@ public class ActorPageStepDefs {
         Assert.assertTrue(currentUrl.contains("/actors"), "Can search for created actor");
     }
 
-    @Then("the form should not be submitted")
-    public void theFormShouldNotBeSubmitted() {
+    @Then("the actor form should not be submitted")
+    public void theActorFormShouldNotBeSubmitted() {
         String currentUrl = driver.getCurrentUrl();
         String expectedUrl = "http://localhost:5173/actors/create";
         Assert.assertEquals(currentUrl, expectedUrl, "The URL is correct");
@@ -148,16 +117,8 @@ public class ActorPageStepDefs {
 
     @And("the user enters valid actor details")
     public void theUserEntersValidActorDetails() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".create-button")));
-        WebElement createActorButton = driver.findElement(By.cssSelector(".create-button"));
-        createActorButton.click();
         driver.findElement(By.id("firstName")).sendKeys("John");
         driver.findElement(By.id("lastName")).sendKeys("Doe");
-    }
-
-    @And("the user submits the actor form")
-    public void theUserSubmitsTheActorForm() {
-        driver.findElement(By.cssSelector(".create-button")).click();
     }
 
 
@@ -169,5 +130,4 @@ public class ActorPageStepDefs {
         WebElement lastNameInput = driver.findElement(By.id("lastName"));
         lastNameInput.clear();
     }
-
 }
