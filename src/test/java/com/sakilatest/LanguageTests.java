@@ -102,6 +102,7 @@ public class LanguageTests {
 
     @AfterTest
     public void tearDown() {
+        driver.close();
         driver.quit();
     }
 }

@@ -331,6 +331,7 @@ public class NavigationTests {
 
     @AfterTest
     public void tearDown() {
+        driver.close();
         driver.quit();
     }
 
