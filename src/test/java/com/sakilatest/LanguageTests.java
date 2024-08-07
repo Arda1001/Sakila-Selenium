@@ -20,7 +20,7 @@ public class LanguageTests {
 
     @BeforeTest
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver/chromedriver.exe");
         driver.manage().window().maximize();
     }
 
